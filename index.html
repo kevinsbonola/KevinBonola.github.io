@@ -27,38 +27,34 @@
 
         .hero-content h1 { font-size: 3.5em; margin-bottom: 20px; letter-spacing: 2px; margin-top: 0; }
         
-        /* NUEVO: Efecto dinámico para tu foto de perfil */
         .name-wrapper {
             position: relative;
             display: inline-block;
-            cursor: pointer; /* Cambia el cursor a una manita */
+            cursor: pointer;
         }
 
         .hover-photo {
             position: absolute;
-            bottom: 90%; /* La posiciona justo arriba del nombre */
+            bottom: 90%;
             left: 50%;
-            /* Inicia un poco más abajo y pequeña para el efecto de animación */
             transform: translateX(-50%) translateY(20px) scale(0.8);
             width: 160px;
             height: 160px;
-            border-radius: 50%; /* Hace que tu foto sea un círculo perfecto */
-            object-fit: cover; /* Evita que la foto se estire o deforme */
-            border: 4px solid #ffffff; /* Un borde blanco limpio */
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #ffffff;
             box-shadow: 0 15px 35px rgba(0,0,0,0.2);
             opacity: 0;
             visibility: hidden;
-            /* La magia: una transición con curva de bezier para que "rebote" */
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            pointer-events: none; /* Evita que la foto bloquee el ratón */
+            pointer-events: none;
             z-index: 100;
         }
 
-        /* Lo que sucede cuando pasas el ratón sobre tu nombre */
         .name-wrapper:hover .hover-photo {
             opacity: 1;
             visibility: visible;
-            transform: translateX(-50%) translateY(-15px) scale(1); /* Sube y crece a su tamaño normal */
+            transform: translateX(-50%) translateY(-15px) scale(1);
         }
 
         .hero-content p { 
@@ -108,18 +104,17 @@
         <div id="particles-js"></div>
         <div class="hero-content">
             
-            <!-- Aquí aplicamos la clase especial alrededor de tu nombre y la foto oculta -->
             <h1 class="name-wrapper">
                 Kevin Bonola
-                <!-- La imagen que cargaste en tu repositorio -->
                 <img src="EGEL+.jpg" alt="Foto de Kevin Bonola" class="hover-photo">
             </h1>
             
             <p>👋 Hi! I'm a <strong>Chemical Engineer</strong> and <strong>Data Analyst</strong> who loves turning messy operational data into clear, <strong>actionable dashboards</strong>. From managing hazardous chemical inventories to optimizing international workflows, my goal is to help global teams make <strong>smarter</strong>, <strong>safer</strong>, and more <strong>sustainable decisions</strong>. 🚀</p>
             
             <div class="social-icons">
-                <a href="#" target="_blank" class="social-icon icon-github"><i class="fab fa-github"></i></a>
-                <a href="#" target="_blank" class="social-icon icon-linkedin"><i class="fab fa-linkedin-in"></i></a>
+                <!-- Enlaces reales conectados -->
+                <a href="https://github.com/kevinsbonola" target="_blank" class="social-icon icon-github"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/bopk0" target="_blank" class="social-icon icon-linkedin"><i class="fab fa-linkedin-in"></i></a>
             </div>
         </div>
     </div>
