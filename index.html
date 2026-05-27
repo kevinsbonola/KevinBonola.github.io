@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kevin Bonola | Data Analyst</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- ESTILOS GENERALES --- */
+        body, html {
+            margin: 0; padding: 0; width: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden; background-color: #ffffff; color: #333;
+        }
+
+        /* --- FASE 1: PORTADA --- */
+        .hero-section { position: relative; height: 100vh; width: 100%; }
+        #particles-js { position: absolute; width: 100%; height: 100%; z-index: 1; }
+        
+        .hero-content {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            z-index: 2; text-align: center; max-width: 850px; padding: 40px;
+            background: rgba(255, 255, 255, 0.85); border-radius: 12px;
+        }
+
+        .hero-content h1 { font-size: 3.5em; margin-bottom: 20px; letter-spacing: 2px; margin-top: 0; }
+        
+        /* NUEVO: Efecto dinámico para tu foto de perfil */
+        .name-wrapper {
+            position: relative;
+            display: inline-block;
+            cursor: pointer; /* Cambia el cursor a una manita */
+        }
+
+        .hover-photo {
+            position: absolute;
+            bottom: 90%; /* La posiciona justo arriba del nombre */
+            left: 50%;
+            /* Inicia un poco más abajo y pequeña para el efecto de animación */
+            transform: translateX(-50%) translateY(20px) scale(0.8);
+            width: 160px;
+            height: 160px;
+            border-radius: 50%; /* Hace que tu foto sea un círculo perfecto */
+            object-fit: cover; /* Evita que la foto se estire o deforme */
+            border: 4px solid #ffffff; /* Un borde blanco limpio */
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+            /* La magia: una transición con curva de bezier para que "rebote" */
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            pointer-events: none; /* Evita que la foto bloquee el ratón */
+            z-index: 100;
+        }
+
+        /* Lo que sucede cuando pasas el ratón sobre tu nombre */
+        .name-wrapper:hover .hover-photo {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(-15px) scale(1); /* Sube y crece a su tamaño normal */
+        }
+
+        .hero-content p { 
+            font-size: 1.4em; line-height: 1.8; color: #222; font-family: 'Georgia', serif; 
+        }
+        .hero-content strong { font-weight: 900; color: #000; }
+
+        .social-icons { margin-top: 30px; display: flex; justify-content: center; gap: 20px; }
+        .social-icon {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 55px; height: 55px; border-radius: 50%; color: #ffffff; text-decoration: none; font-size: 26px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .social-icon:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.15); color: #ffffff; }
+        .icon-github { background-color: #24292e; }
+        .icon-linkedin { background-color: #ffca28; }
+
+        /* --- FASE 2: PROYECTOS --- */
+        .projects-section { padding: 80px 20px; background-color: #f8f9fa; text-align: center; z-index: 2; position: relative; }
+        .projects-section h2 { font-size: 2.5em; margin-bottom: 40px; }
+        .card-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; max-width: 1100px; margin: 0 auto; }
+        .project-card {
+            background: #ffffff; border-radius: 10px; padding: 25px; width: 300px; text-align: left;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex; flex-direction: column; 
+        }
+        .project-card:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .project-card h3 { margin-top: 0; color: #2c3e50; }
+        .project-card p { color: #666; font-size: 0.95em; line-height: 1.5; flex-grow: 1; }
+        .tech-tags span { display: inline-block; background: #e9ecef; color: #495057; padding: 4px 10px; border-radius: 15px; font-size: 0.8em; margin-right: 5px; margin-top: 10px; }
+        .btn { display: inline-block; margin-top: 20px; padding: 10px 15px; background-color: #2c3e50; color: #ffffff; text-decoration: none; border-radius: 5px; font-size: 0.9em; text-align: center; transition: background-color 0.3s; }
+        .btn:hover { background-color: #1a252f; }
+
+        /* --- FASE 3: HABILIDADES --- */
+        .skills-section { padding: 80px 20px; background-color: #ffffff; text-align: center; }
+        .skills-section h2 { font-size: 2.5em; margin-bottom: 40px; color: #2c3e50; }
+        .skills-grid { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; max-width: 800px; margin: 0 auto; }
+        .skill-badge { background-color: #ffffff; padding: 12px 25px; border-radius: 30px; font-weight: bold; color: #333; border: 2px solid #e9ecef; box-shadow: 0 2px 5px rgba(0,0,0,0.02); transition: border-color 0.3s; }
+        .skill-badge:hover { border-color: #2c3e50; }
+
+    </style>
+</head>
+<body>
+
+    <!-- FASE 1: PORTADA INTERACTIVA -->
+    <div class="hero-section">
+        <div id="particles-js"></div>
+        <div class="hero-content">
+            
+            <!-- Aquí aplicamos la clase especial alrededor de tu nombre y la foto oculta -->
+            <h1 class="name-wrapper">
+                Kevin Bonola
+                <!-- La imagen que cargaste en tu repositorio -->
+                <img src="EGEL+.jpg" alt="Foto de Kevin Bonola" class="hover-photo">
+            </h1>
+            
+            <p>👋 Hi! I'm a <strong>Chemical Engineer</strong> and <strong>Data Analyst</strong> who loves turning messy operational data into clear, <strong>actionable dashboards</strong>. From managing hazardous chemical inventories to optimizing international workflows, my goal is to help global teams make <strong>smarter</strong>, <strong>safer</strong>, and more <strong>sustainable decisions</strong>. 🚀</p>
+            
+            <div class="social-icons">
+                <a href="#" target="_blank" class="social-icon icon-github"><i class="fab fa-github"></i></a>
+                <a href="#" target="_blank" class="social-icon icon-linkedin"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- FASE 2: SECCIÓN DE PROYECTOS -->
+    <div class="projects-section">
+        <h2>Featured Projects</h2>
+        <div class="card-grid">
+            <div class="project-card">
+                <h3>Industrial Safety & Risk Matrix</h3>
+                <p>Standardized a complex inventory of hazardous chemical substances, transforming raw operational data into a structured risk assessment model to ensure compliance.</p>
+                <div class="tech-tags"><span>Python</span> <span>Pandas</span> <span>Excel</span></div>
+                <a href="#" class="btn" target="_blank">Ver Proyecto</a>
+            </div>
+            <div class="project-card">
+                <h3>Commercial Logistics Dashboard</h3>
+                <p>Designed an interactive dashboard to monitor supply chain metrics, reducing reporting time and providing actionable insights for executive decision-making.</p>
+                <div class="tech-tags"><span>SQL</span> <span>Tableau</span> <span>Data Cleaning</span></div>
+                <a href="#" class="btn" target="_blank">Ver Proyecto</a>
+            </div>
+            <div class="project-card">
+                <h3>Pricing Optimization Model</h3>
+                <p>Developed a scalable pricing structure and wholesale model for a retail business, analyzing cost margins to maximize profitability across different volume tiers.</p>
+                <div class="tech-tags"><span>Python</span> <span>Power BI</span> <span>Statistics</span></div>
+                <a href="#" class="btn" target="_blank">Ver Proyecto</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- FASE 3: SECCIÓN DE HABILIDADES -->
+    <div class="skills-section">
+        <h2>Tech Stack & Tools</h2>
+        <div class="skills-grid">
+            <div class="skill-badge">Python (Pandas, Plotly)</div>
+            <div class="skill-badge">SQL (PostgreSQL)</div>
+            <div class="skill-badge">Tableau</div>
+            <div class="skill-badge">Power BI</div>
+            <div class="skill-badge">Git & GitHub</div>
+            <div class="skill-badge">Advanced Excel</div>
+            <div class="skill-badge">A/B Testing & Statistics</div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS MÁGICOS -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS("particles-js", {
+            "particles": { "number": { "value": 80, "density": { "enable": true, "value_area": 800 } }, "color": { "value": "#aaaaaa" }, "shape": { "type": "circle" }, "opacity": { "value": 0.5, "random": false }, "size": { "value": 3, "random": true }, "line_linked": { "enable": true, "distance": 150, "color": "#cccccc", "opacity": 0.4, "width": 1 }, "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false } },
+            "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true }, "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 1 } }, "push": { "particles_nb": 4 } } },
+            "retina_detect": true
+        });
+    </script>
+</body>
+</html>
