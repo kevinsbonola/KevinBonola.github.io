@@ -15,7 +15,7 @@
         .hero-content { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10; text-align: center; max-width: 850px; padding: 40px; background: rgba(255, 255, 255, 0.85); border-radius: 12px; }
         .hero-content h1 { font-size: 3.5em; margin-bottom: 20px; letter-spacing: 2px; margin-top: 0; }
         .name-wrapper { position: relative; display: inline-block; cursor: pointer; }
-        .hover-photo { position: absolute; bottom: 90%; left: 50%; transform: translateX(-50%) translateY(20px) scale(0.8); width: 160px; height: 160px; border-radius: 50%; object-fit: cover; border: 4px solid #ffffff; box-shadow: 0 15px 35px rgba(0,0,0,0.2); opacity: 0; visibility: hidden; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); pointer-events: none; z-index: 100; }
+        .hover-photo { position: absolute; bottom: 90%; left: 50%; transform: translateX(-50%) translateY(20px) scale(0.8); width: 160px; height: 160px; border-radius: 50%; object-fit: contain; /* <--- CAMBIO AQUÍ: 'contain' asegura que se vea toda la imagen */ background-color: #ffffff; /* <--- Fondo blanco para rellenar los espacios sobrantes */ border: 4px solid #ffffff; box-shadow: 0 15px 35px rgba(0,0,0,0.2); opacity: 0; visibility: hidden; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); pointer-events: none; z-index: 100;}
         .name-wrapper:hover .hover-photo { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(-15px) scale(1); }
         .hero-content p { font-size: 1.4em; line-height: 1.8; color: #222; font-family: 'Georgia', serif; }
         .hero-content strong { font-weight: 900; color: #000; }
